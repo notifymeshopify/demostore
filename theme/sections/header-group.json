@@ -2,26 +2,108 @@
   "name": "t:sections.header.name",
   "type": "header",
   "sections": {
-    "announcement-bar": {
-      "type": "announcement-bar",
+    "nm-announcement": {
+      "type": "demo-announcement-bar",
       "blocks": {
-        "announcement-bar-0": {
-          "type": "announcement",
+        "m1": {
+          "type": "message",
           "settings": {
-            "text": "Welcome to our store",
-            "text_alignment": "center",
-            "color_scheme": "scheme-1",
-            "link": ""
+            "message": "🔔 Free 14-day trial — no credit card, no commitment."
+          }
+        },
+        "m2": {
+          "type": "message",
+          "settings": {
+            "message": "📦 Join 10,000+ Shopify merchants recovering lost sales."
+          }
+        },
+        "m3": {
+          "type": "message",
+          "settings": {
+            "message": "⚡ 5-minute install. Works on every theme."
           }
         }
       },
-      "block_order": [
-        "announcement-bar-0"
-      ]
+      "block_order": ["m1", "m2", "m3"],
+      "settings": {
+        "background_color": "#0F0F0F",
+        "text_color": "#FFFFFF",
+        "rotate_interval": 5,
+        "color_scheme": "scheme-1"
+      }
     },
     "header": {
       "type": "header",
+      "blocks": {
+        "mega-1": {
+          "type": "nm_mega_item",
+          "settings": {
+            "title": "Shopify's Best Back-in-Stock App",
+            "description": "Capture demand on every sold-out variant.",
+            "link_label": "Try it →",
+            "link_url": "/products/shopify-s-best-back-in-stock-app"
+          }
+        },
+        "mega-2": {
+          "type": "nm_mega_item",
+          "settings": {
+            "title": "Shopify's Best Preorder App",
+            "description": "Triggers preorder widget on PDP.",
+            "link_label": "Try it →",
+            "link_url": "/products/shopify-s-best-preorder-app"
+          }
+        },
+        "mega-3": {
+          "type": "nm_mega_item",
+          "settings": {
+            "title": "Shopify's Best Wishlist App",
+            "description": "Wishlist heart on PDP.",
+            "link_label": "Try it →",
+            "link_url": "/products/shopify-s-best-wishlist-app"
+          }
+        },
+        "mega-4": {
+          "type": "nm_mega_item",
+          "settings": {
+            "title": "Shopify's Best Low-Stock Alert App",
+            "description": "Demos FOMO / urgency bar.",
+            "link_label": "Try it →",
+            "link_url": "/products/shopify-s-best-low-stock-alert-app"
+          }
+        },
+        "mega-5": {
+          "type": "nm_mega_item",
+          "settings": {
+            "title": "Notify Me! AI for Restock Decisions",
+            "description": "Preorder with launch date.",
+            "link_label": "Try it →",
+            "link_url": "/products/notify-me-ai-for-restock-decisions"
+          }
+        },
+        "mega-6": {
+          "type": "nm_mega_item",
+          "settings": {
+            "title": "Multi-Language Widget Bundle",
+            "description": "Demos language picker.",
+            "link_label": "Try it →",
+            "link_url": "/products/multi-language-widget-bundle"
+          }
+        }
+      },
+      "block_order": ["mega-1", "mega-2", "mega-3", "mega-4", "mega-5", "mega-6"],
       "settings": {
+        "enable_nm_demo_header": true,
+        "nm_demo_badge_text": "Demo Store",
+        "nm_nav_aria_label": "Primary navigation",
+        "nm_link_shop_label": "Shop",
+        "nm_link_shop": "/collections/all",
+        "nm_link_features_label": "Features",
+        "nm_link_how_label": "How it Works",
+        "nm_link_how": "/pages/how-it-works",
+        "nm_link_pricing_label": "Pricing",
+        "nm_link_pricing": "/pages/pricing",
+        "nm_link_about_label": "About",
+        "nm_link_about": "/pages/about",
         "color_scheme": "scheme-1",
         "logo_position": "middle-left",
         "menu": "main-menu",
@@ -32,13 +114,10 @@
         "enable_language_selector": true,
         "mobile_logo_position": "center",
         "margin_bottom": 0,
-        "padding_top": 20,
-        "padding_bottom": 20
+        "padding_top": 16,
+        "padding_bottom": 16
       }
     }
   },
-  "order": [
-    "announcement-bar",
-    "header"
-  ]
+  "order": ["nm-announcement", "header"]
 }

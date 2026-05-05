@@ -1,0 +1,122 @@
+{% comment %}
+  Swap `dashboard_image` in the theme editor with a real Notify Me! dashboard screenshot when available.
+{% endcomment %}
+{{ 'section-demo-store.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<section class="nm-dash section-{{ section.id }}-padding nm-body-font" style="background-color: {{ section.settings.background_color }};" {{ section.shopify_attributes }}>
+  <div class="page-width">
+    <div class="nm-dash__grid">
+      <div>
+        <h2 class="nm-hero__heading nm-display" style="color: #fff; font-size: clamp(2.8rem, 4vw, 4.2rem);">
+          {{ section.settings.headline_before | escape }}
+          {% if section.settings.headline_highlight != blank %}
+            <span class="nm-grad">{{ section.settings.headline_highlight | escape }}</span>
+          {% endif %}
+        </h2>
+        <div class="nm-hero__subhead rte" style="color: rgba(255,255,255,0.85);">{{ section.settings.body }}</div>
+        {%- if section.settings.cta_label != blank -%}
+          <a class="nm-button-secondary" style="border-color: #fff; color: #fff;" href="{{ section.settings.cta_link }}">{{ section.settings.cta_label | escape }}</a>
+        {%- endif -%}
+      </div>
+      <div class="nm-dash__media">
+        {%- if section.settings.dashboard_image != blank -%}
+          {{
+            section.settings.dashboard_image
+            | image_url: width: 1400
+            | image_tag:
+              loading: 'lazy',
+              widths: '375, 550, 750, 900, 1100, 1400',
+              sizes: '(min-width: 990px) 45vw, 100vw',
+              alt: section.settings.dashboard_image.alt | escape
+          }}
+        {%- else -%}
+          {{ 'lifestyle-2' | placeholder_svg_tag: 'placeholder-svg' }}
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "NM dashboard preview",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "#1B1A2B"
+    },
+    {
+      "type": "image_picker",
+      "id": "dashboard_image",
+      "label": "Dashboard image"
+    },
+    {
+      "type": "text",
+      "id": "headline_before",
+      "label": "Headline (before gradient)",
+      "default": "Smarter inventory recovery "
+    },
+    {
+      "type": "text",
+      "id": "headline_highlight",
+      "label": "Headline (gradient)",
+      "default": "starts here."
+    },
+    {
+      "type": "richtext",
+      "id": "body",
+      "label": "Body",
+      "default": "<p>The Notify Me! dashboard shows what's wanted, when to restock, and how much revenue you've already recovered. Set it up once. Forget it forever.</p>"
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "CTA label",
+      "default": "See the dashboard →"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "CTA link"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding",
+      "default": 72
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding",
+      "default": 72
+    }
+  ],
+  "presets": [{ "name": "NM dashboard preview" }]
+}
+{% endschema %}

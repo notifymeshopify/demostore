@@ -1,0 +1,120 @@
+{{ 'section-demo-store.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .nm-pitch-{{ section.id }} {
+    background-color: {{ section.settings.background_color }};
+  }
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<section class="nm-pitch nm-pitch-{{ section.id }} section-{{ section.id }}-padding nm-body-font" {{ section.shopify_attributes }}>
+  <div class="page-width">
+    <div class="nm-pitch__inner">
+      <h2 class="nm-pitch__headline nm-display">
+        {{ section.settings.line_a | escape }}
+        <span class="nm-grad">{{ section.settings.line_a_grad | escape }}</span>
+        {{ section.settings.line_mid | escape }}
+        <br>
+        {{ section.settings.line_b | escape }}
+        <span class="nm-grad">{{ section.settings.line_b_grad | escape }}</span>
+      </h2>
+      <div class="nm-pitch__body rte">{{ section.settings.body }}</div>
+      {%- if section.settings.cta_label != blank -%}
+        <a class="nm-button-primary" href="{{ section.settings.cta_link }}">{{ section.settings.cta_label | escape }}</a>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "NM pitch",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "#F3F4F6"
+    },
+    {
+      "type": "text",
+      "id": "line_a",
+      "label": "Headline line 1 (text before first gradient)",
+      "default": "There's "
+    },
+    {
+      "type": "text",
+      "id": "line_a_grad",
+      "label": "Headline line 1 (gradient word)",
+      "default": "email lists"
+    },
+    {
+      "type": "text",
+      "id": "line_mid",
+      "label": "Headline (between gradients)",
+      "default": " —"
+    },
+    {
+      "type": "text",
+      "id": "line_b",
+      "label": "Headline line 2 (text before second gradient)",
+      "default": "and there's "
+    },
+    {
+      "type": "text",
+      "id": "line_b_grad",
+      "label": "Headline line 2 (gradient words)",
+      "default": "Notify Me!"
+    },
+    {
+      "type": "richtext",
+      "id": "body",
+      "label": "Body",
+      "default": "<p>Generic newsletter forms capture nothing. Notify Me! captures <em>intent</em> — locked to a specific product, sized to a specific variant, fired at the exact moment inventory returns.</p><p>Result: <strong>30%+ click-through</strong> and <strong>18%+ conversion</strong> on every restock alert.</p>"
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "CTA label",
+      "default": "Install Notify Me! →"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "CTA link"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding",
+      "default": 96
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding",
+      "default": 96
+    }
+  ],
+  "presets": [{ "name": "NM pitch" }]
+}
+{% endschema %}

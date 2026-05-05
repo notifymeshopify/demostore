@@ -139,9 +139,14 @@
     -%}
 
     {%- if section.settings.logo_position != 'middle-center' -%}
-      {%- if request.page_type == 'index' -%}
+      {%- if section.settings.enable_nm_demo_header -%}
+        {%- if request.page_type == 'index' -%}
+          <h1 class="header__heading">{% render 'nm-demo-logo', section: section %}</h1>
+        {%- else -%}
+          <div class="header__heading">{% render 'nm-demo-logo', section: section %}</div>
+        {%- endif -%}
+      {%- elsif request.page_type == 'index' -%}
         <h1 class="header__heading">
-      {%- endif -%}
           <a href="{{ routes.root_url }}" class="header__heading-link link link--text focus-inset">
             {%- if settings.logo != blank -%}
               <div class="header__heading-logo-wrapper">
@@ -163,13 +168,38 @@
               <span class="h2">{{ shop.name }}</span>
             {%- endif -%}
           </a>
-      {%- if request.page_type == 'index' -%}
         </h1>
+      {%- else -%}
+        <div class="header__heading">
+          <a href="{{ routes.root_url }}" class="header__heading-link link link--text focus-inset">
+            {%- if settings.logo != blank -%}
+              <div class="header__heading-logo-wrapper">
+                {%- assign logo_alt = settings.logo.alt | default: shop.name | escape -%}
+                {%- assign logo_height = settings.logo_width | divided_by: settings.logo.aspect_ratio -%}
+                {% capture sizes %}(max-width: {{ settings.logo_width | times: 2 }}px) 50vw, {{ settings.logo_width }}px{% endcapture %}
+                {% capture widths %}{{ settings.logo_width }}, {{ settings.logo_width | times: 1.5 | round }}, {{ settings.logo_width | times: 2 }}{% endcapture %}
+                {{ settings.logo | image_url: width: 600 | image_tag:
+                  class: 'header__heading-logo motion-reduce',
+                  widths: widths,
+                  height: logo_height,
+                  width: settings.logo_width,
+                  alt: logo_alt,
+                  sizes: sizes,
+                  preload: true
+                }}
+              </div>
+            {%- else -%}
+              <span class="h2">{{ shop.name }}</span>
+            {%- endif -%}
+          </a>
+        </div>
       {%- endif -%}
     {%- endif -%}
 
     {%- liquid
-      if section.settings.menu != blank
+      if section.settings.enable_nm_demo_header
+        render 'nm-demo-header-nav', section: section
+      elsif section.settings.menu != blank
         if section.settings.menu_type_desktop == 'dropdown'
           render 'header-dropdown-menu'
         elsif section.settings.menu_type_desktop != 'drawer'
@@ -179,9 +209,14 @@
     %}
 
     {%- if section.settings.logo_position == 'middle-center' -%}
-      {%- if request.page_type == 'index' -%}
+      {%- if section.settings.enable_nm_demo_header -%}
+        {%- if request.page_type == 'index' -%}
+          <h1 class="header__heading">{% render 'nm-demo-logo', section: section %}</h1>
+        {%- else -%}
+          <div class="header__heading">{% render 'nm-demo-logo', section: section %}</div>
+        {%- endif -%}
+      {%- elsif request.page_type == 'index' -%}
         <h1 class="header__heading">
-      {%- endif -%}
           <a href="{{ routes.root_url }}" class="header__heading-link link link--text focus-inset">
             {%- if settings.logo != blank -%}
               <div class="header__heading-logo-wrapper">
@@ -203,8 +238,31 @@
               <span class="h2">{{ shop.name }}</span>
             {%- endif -%}
           </a>
-      {%- if request.page_type == 'index' -%}
         </h1>
+      {%- else -%}
+        <div class="header__heading">
+          <a href="{{ routes.root_url }}" class="header__heading-link link link--text focus-inset">
+            {%- if settings.logo != blank -%}
+              <div class="header__heading-logo-wrapper">
+                {%- assign logo_alt = settings.logo.alt | default: shop.name | escape -%}
+                {%- assign logo_height = settings.logo_width | divided_by: settings.logo.aspect_ratio -%}
+                {% capture sizes %}(min-width: 750px) {{ settings.logo_width }}px, 50vw{% endcapture %}
+                {% capture widths %}{{ settings.logo_width }}, {{ settings.logo_width | times: 1.5 | round }}, {{ settings.logo_width | times: 2 }}{% endcapture %}
+                {{ settings.logo | image_url: width: 600 | image_tag:
+                  class: 'header__heading-logo',
+                  widths: widths,
+                  height: logo_height,
+                  width: settings.logo_width,
+                  alt: logo_alt,
+                  sizes: sizes,
+                  preload: true
+                }}
+              </div>
+            {%- else -%}
+              <span class="h2">{{ shop.name }}</span>
+            {%- endif -%}
+          </a>
+        </div>
       {%- endif -%}
     {%- endif -%}
 
@@ -450,8 +508,80 @@
 {
   "name": "t:sections.header.name",
   "class": "section-header",
-  "max_blocks": 3,
+  "max_blocks": 24,
   "settings": [
+    {
+      "type": "header",
+      "content": "Notify Me! demo header"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_nm_demo_header",
+      "label": "Enable Notify Me! demo logo & desktop nav",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "nm_demo_badge_text",
+      "label": "Demo badge text",
+      "default": "Demo Store"
+    },
+    {
+      "type": "text",
+      "id": "nm_nav_aria_label",
+      "label": "Desktop nav aria label",
+      "default": "Primary navigation"
+    },
+    {
+      "type": "text",
+      "id": "nm_link_shop_label",
+      "label": "Nav: Shop label",
+      "default": "Shop"
+    },
+    {
+      "type": "url",
+      "id": "nm_link_shop",
+      "label": "Nav: Shop URL"
+    },
+    {
+      "type": "text",
+      "id": "nm_link_features_label",
+      "label": "Nav: Features label",
+      "default": "Features"
+    },
+    {
+      "type": "text",
+      "id": "nm_link_how_label",
+      "label": "Nav: How it works label",
+      "default": "How it Works"
+    },
+    {
+      "type": "url",
+      "id": "nm_link_how",
+      "label": "Nav: How it works URL"
+    },
+    {
+      "type": "text",
+      "id": "nm_link_pricing_label",
+      "label": "Nav: Pricing label",
+      "default": "Pricing"
+    },
+    {
+      "type": "url",
+      "id": "nm_link_pricing",
+      "label": "Nav: Pricing URL"
+    },
+    {
+      "type": "text",
+      "id": "nm_link_about_label",
+      "label": "Nav: About label",
+      "default": "About"
+    },
+    {
+      "type": "url",
+      "id": "nm_link_about",
+      "label": "Nav: About URL"
+    },
     {
       "type": "select",
       "id": "logo_position",
@@ -632,6 +762,36 @@
   "blocks": [
     {
       "type": "@app"
+    },
+    {
+      "type": "nm_mega_item",
+      "name": "NM mega menu item",
+      "limit": 6,
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Feature"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "One-line summary for this demo product."
+        },
+        {
+          "type": "text",
+          "id": "link_label",
+          "label": "Link label",
+          "default": "Try it →"
+        },
+        {
+          "type": "url",
+          "id": "link_url",
+          "label": "Link URL"
+        }
+      ]
     }
   ]
 }

@@ -6,6 +6,15 @@
   assign t = icon | default: 'preorder'
 -%}
 {%- case t -%}
+  {%- when 'capture' -%}
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true" focusable="false">
+      <path d="M12 5v14M5 12h14"/>
+      <circle cx="12" cy="12" r="9"/>
+    </svg>
+  {%- when 'chart' -%}
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true" focusable="false">
+      <path d="M4 19V5M8 19v-6M12 19V9M16 19v-4M20 19V11"/>
+    </svg>
   {%- when 'notify' -%}
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true" focusable="false">
       <path d="M12 22a2.5 2.5 0 0 0 2.45-2h-4.9A2.5 2.5 0 0 0 12 22Z"/>

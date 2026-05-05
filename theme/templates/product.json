@@ -124,6 +124,36 @@
         "padding_bottom": 12
       }
     },
+    "nm_pdp_callout": {
+      "type": "demo-pdp-feature-callout",
+      "settings": {
+        "default_text": "<p>You're viewing a Notify Me! demo product. Add your app blocks to this template to preview alerts, preorders, and wishlist.</p>"
+      },
+      "blocks": {
+        "h1": {
+          "type": "override",
+          "settings": {
+            "product_handle": "shopify-s-best-back-in-stock-app",
+            "callout_text": "<p>You're on the back-in-stock demo. The bell button above is live — try it.</p>"
+          }
+        },
+        "h2": {
+          "type": "override",
+          "settings": {
+            "product_handle": "shopify-s-best-preorder-app",
+            "callout_text": "<p>You're on the preorder demo. Use the preorder controls on the product form.</p>"
+          }
+        },
+        "h3": {
+          "type": "override",
+          "settings": {
+            "product_handle": "shopify-s-best-wishlist-app",
+            "callout_text": "<p>You're on the wishlist demo. Use the heart / wishlist control from Notify Me! on this page.</p>"
+          }
+        }
+      },
+      "block_order": ["h1", "h2", "h3"]
+    },
     "image-with-text": {
       "type": "image-with-text",
       "blocks": {
@@ -222,6 +252,7 @@
   "order": [
     "demo_strip",
     "main",
+    "nm_pdp_callout",
     "image-with-text",
     "multicolumn",
     "related-products"

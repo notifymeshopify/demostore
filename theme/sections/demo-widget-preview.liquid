@@ -1,0 +1,274 @@
+{{ 'section-demo-store.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<section class="nm-widget-preview section-{{ section.id }}-padding nm-body-font color-{{ section.settings.color_scheme }} gradient" {{ section.shopify_attributes }}>
+  <div class="page-width">
+    {%- if section.settings.eyebrow != blank -%}
+      <p class="nm-hero__eyebrow nm-mono-label" style="color: var(--nm-blue); text-align: center;">{{ section.settings.eyebrow | escape }}</p>
+    {%- endif -%}
+    <h2 class="nm-pitch__headline" style="text-align: center; max-width: 52rem; margin-left: auto; margin-right: auto;">
+      {{ section.settings.headline_before | escape }}
+      {% if section.settings.headline_highlight != blank %}
+        <span class="nm-grad">{{ section.settings.headline_highlight | escape }}</span>
+      {% endif %}
+    </h2>
+    {%- if section.settings.subhead != blank -%}
+      <p class="nm-section-intro__sub" style="text-align: center; max-width: 40rem; margin: 0 auto 3rem;">{{ section.settings.subhead | escape }}</p>
+    {%- endif -%}
+
+    <div class="nm-widget-preview__mock" data-nm-widget-root>
+      <div class="nm-widget-preview__product-row">
+        {%- if section.settings.mock_image != blank -%}
+          {{
+            section.settings.mock_image
+            | image_url: width: 400
+            | image_tag:
+              loading: 'lazy',
+              class: 'nm-widget-preview__thumb',
+              widths: '100, 200, 400',
+              alt: section.settings.mock_image.alt | escape
+          }}
+        {%- else -%}
+          <span class="nm-widget-preview__thumb">{{ 'product-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}</span>
+        {%- endif -%}
+        <div>
+          <p class="nm-mono-label" style="margin: 0 0 0.5rem; font-size: 1.2rem; opacity: 0.7;">{{ section.settings.mock_vendor | escape }}</p>
+          <p style="margin: 0; font-size: 1.8rem; font-weight: 600;">{{ section.settings.mock_title | escape }}</p>
+        </div>
+      </div>
+      <button type="button" class="nm-widget-bell" data-nm-widget-open aria-haspopup="dialog" aria-controls="NmWidgetModal-{{ section.id }}">
+        {{ section.settings.bell_label | escape }}
+      </button>
+      <p style="margin: 1.5rem 0 0; font-size: 1.3rem; opacity: 0.72; text-align: center;">{{ section.settings.note | escape }}</p>
+    </div>
+  </div>
+
+  <div
+    class="nm-widget-modal"
+    id="NmWidgetModal-{{ section.id }}"
+    data-nm-widget-modal
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="NmWidgetTitle-{{ section.id }}"
+    hidden
+  >
+    <div class="nm-widget-modal__dialog" role="document">
+      <button type="button" class="nm-widget-modal__close" data-nm-widget-close aria-label="{{ section.settings.close_label | escape }}">&times;</button>
+      <div data-nm-widget-form-wrap>
+        <h3 id="NmWidgetTitle-{{ section.id }}" style="margin-top: 0;">{{ section.settings.modal_title | escape }}</h3>
+        <form data-nm-widget-form novalidate>
+          <div class="field" style="margin-bottom: 1.25rem;">
+            <label class="field__label" for="NmEmail-{{ section.id }}">{{ section.settings.email_label | escape }}</label>
+            <input class="field__input" type="email" id="NmEmail-{{ section.id }}" name="email" required autocomplete="email" placeholder="{{ section.settings.email_placeholder | escape }}">
+          </div>
+          <div class="field" style="margin-bottom: 1.25rem;">
+            <label class="field__label" for="NmVar-{{ section.id }}">{{ section.settings.variant_label | escape }}</label>
+            <select class="field__input" id="NmVar-{{ section.id }}" name="variant">
+              <option value="8">Size: 8</option>
+              <option value="9">Size: 9</option>
+              <option value="10">Size: 10</option>
+              <option value="11">Size: 11</option>
+            </select>
+          </div>
+          <button type="submit" class="nm-button-primary" style="width: 100%;">{{ section.settings.submit_label | escape }}</button>
+        </form>
+      </div>
+      <div class="nm-widget-modal__success" data-nm-widget-success hidden>
+        <div class="nm-check" aria-hidden="true">✓</div>
+        <p style="margin: 0; font-size: 1.8rem; font-weight: 600;">{{ section.settings.success_message | escape }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var sectionEl = document.getElementById('shopify-section-{{ section.id }}');
+    if (!sectionEl) return;
+    var openBtn = sectionEl.querySelector('[data-nm-widget-open]');
+    var modal = sectionEl.querySelector('[data-nm-widget-modal]');
+    var closeBtn = sectionEl.querySelector('[data-nm-widget-close]');
+    var form = sectionEl.querySelector('[data-nm-widget-form]');
+    var formWrap = sectionEl.querySelector('[data-nm-widget-form-wrap]');
+    var success = sectionEl.querySelector('[data-nm-widget-success]');
+    if (!openBtn || !modal) return;
+
+    function openModal() {
+      if (formWrap) formWrap.removeAttribute('hidden');
+      if (success) success.setAttribute('hidden', '');
+      if (form) form.reset();
+      modal.hidden = false;
+      modal.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+      var email = modal.querySelector('input[type="email"]');
+      if (email) email.focus();
+    }
+    function closeModal() {
+      modal.classList.remove('is-open');
+      modal.hidden = true;
+      document.body.style.overflow = '';
+      openBtn.focus();
+    }
+
+    openBtn.addEventListener('click', openModal);
+    closeBtn && closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', function (e) {
+      if (e.target === modal) closeModal();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && !modal.hidden) closeModal();
+    });
+
+    form &&
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        if (!form.reportValidity()) return;
+        formWrap.setAttribute('hidden', '');
+        success.removeAttribute('hidden');
+      });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "NM widget preview",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "PREVIEW THE WIDGET"
+    },
+    {
+      "type": "text",
+      "id": "headline_before",
+      "label": "Headline (before gradient)",
+      "default": "Tap the bell. "
+    },
+    {
+      "type": "text",
+      "id": "headline_highlight",
+      "label": "Headline (gradient)",
+      "default": "See what your customers see."
+    },
+    {
+      "type": "text",
+      "id": "subhead",
+      "label": "Subhead",
+      "default": "This is the real Notify Me! widget — not a screenshot."
+    },
+    {
+      "type": "image_picker",
+      "id": "mock_image",
+      "label": "Mock product image"
+    },
+    {
+      "type": "text",
+      "id": "mock_vendor",
+      "label": "Mock vendor line",
+      "default": "Demo brand"
+    },
+    {
+      "type": "text",
+      "id": "mock_title",
+      "label": "Mock product title",
+      "default": "Heritage Sneaker — Sold Out"
+    },
+    {
+      "type": "text",
+      "id": "bell_label",
+      "label": "Bell button label",
+      "default": "Notify me when back in stock"
+    },
+    {
+      "type": "textarea",
+      "id": "note",
+      "label": "Note below mock",
+      "default": "Widget styling fully customizable — colors, copy, position, animation."
+    },
+    {
+      "type": "text",
+      "id": "modal_title",
+      "label": "Modal title",
+      "default": "Get notified"
+    },
+    {
+      "type": "text",
+      "id": "email_label",
+      "label": "Email label",
+      "default": "Email"
+    },
+    {
+      "type": "text",
+      "id": "email_placeholder",
+      "label": "Email placeholder",
+      "default": "you@brand.com"
+    },
+    {
+      "type": "text",
+      "id": "variant_label",
+      "label": "Variant label",
+      "default": "Choose variant"
+    },
+    {
+      "type": "text",
+      "id": "submit_label",
+      "label": "Submit label",
+      "default": "Notify me"
+    },
+    {
+      "type": "text",
+      "id": "success_message",
+      "label": "Success message",
+      "default": "You're on the list."
+    },
+    {
+      "type": "text",
+      "id": "close_label",
+      "label": "Close button aria label",
+      "default": "Close"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding",
+      "default": 72
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding",
+      "default": 72
+    }
+  ],
+  "presets": [{ "name": "NM widget preview" }]
+}
+{% endschema %}

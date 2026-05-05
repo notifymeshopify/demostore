@@ -170,6 +170,9 @@
               {%- if section.settings.newsletter_heading != blank -%}
                 <h2 class="footer-block__heading inline-richtext">{{ section.settings.newsletter_heading }}</h2>
               {%- endif -%}
+              {%- if section.settings.newsletter_subtext != blank -%}
+                <div class="footer-block__details-content rte" style="margin-bottom: 1.2rem;">{{ section.settings.newsletter_subtext }}</div>
+              {%- endif -%}
               {%- form 'customer', id: 'ContactFooter', class: 'footer__newsletter newsletter-form' -%}
                 <input type="hidden" name="contact[tags]" value="newsletter">
                 <div class="newsletter-form__field-wrapper">
@@ -299,9 +302,13 @@
     </div>
     <div class="footer__content-bottom-wrapper page-width{% if section.settings.enable_country_selector == false and section.settings.enable_language_selector == false %} footer__content-bottom-wrapper--center{% endif %}">
       <div class="footer__copyright caption">
-        <small class="copyright__content"
-          >&copy; {{ 'now' | date: '%Y' }}, {{ shop.name | link_to: routes.root_url -}}
-        </small>
+        {%- if section.settings.nm_footer_caption != blank -%}
+          <div class="copyright__content rte">{{ section.settings.nm_footer_caption }}</div>
+        {%- else -%}
+          <small class="copyright__content"
+            >&copy; {{ 'now' | date: '%Y' }}, {{ shop.name | link_to: routes.root_url -}}
+          </small>
+        {%- endif -%}
         <small class="copyright__content">{{ powered_by_link }}</small>
         {%- if section.settings.show_policy -%}
           <ul class="policies list-unstyled">
@@ -446,6 +453,17 @@
       "id": "newsletter_heading",
       "default": "t:sections.footer.settings.newsletter_heading.default",
       "label": "t:sections.footer.settings.newsletter_heading.label"
+    },
+    {
+      "type": "richtext",
+      "id": "newsletter_subtext",
+      "label": "Newsletter subtext"
+    },
+    {
+      "type": "richtext",
+      "id": "nm_footer_caption",
+      "label": "Notify Me demo footer note",
+      "info": "When set, replaces the default © line above Powered by Shopify."
     },
     {
       "type": "header",

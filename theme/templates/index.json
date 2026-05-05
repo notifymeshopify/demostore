@@ -1,203 +1,269 @@
 {
   "sections": {
-    "demo_hero": {
+    "nm_hero": {
       "type": "demo-store-hero",
-      "settings": {
-        "image_overlay_opacity": 45,
-        "eyebrow": "Preorder · Back in stock · Wishlist",
-        "heading": "Build confidence before you launch",
-        "heading_size": "h0",
-        "text": "<p>This Dawn storefront is wired for your Back in Stock & Preorder demo — showcase alerts, reservations, and saved items with real catalog scenarios.</p>",
-        "button_label": "Explore collections",
-        "button_link": "shopify://collections/all",
-        "button_style_secondary": false,
-        "button_label_2": "How it works",
-        "button_link_2": "",
-        "button_style_secondary_2": true,
-        "color_scheme": "scheme-3",
-        "padding_top": 0,
-        "padding_bottom": 0
-      }
+      "settings": {}
     },
-    "demo_features": {
-      "type": "demo-store-features",
+    "nm_grid": {
+      "type": "demo-store-product-grid",
       "blocks": {
-        "f1": {
-          "type": "feature",
+        "pg1": {
+          "type": "product_card",
           "settings": {
-            "icon": "preorder",
-            "title": "Preorder",
-            "text": "<p>Highlight upcoming inventory and capture demand early. Place your app’s preorder controls beside Add to cart on the product template.</p>",
-            "link_label": "Preorder collection",
-            "link": "shopify://collections/all"
+            "title": "Shopify's Best Back-in-Stock App",
+            "subtitle": "Triggers BIS widget on PDP.",
+            "price_label": "$0.00/mo",
+            "stock_state": "sold_out",
+            "cta_label": "Try it →",
+            "cta_url": "/products/shopify-s-best-back-in-stock-app"
           }
         },
-        "f2": {
-          "type": "feature",
+        "pg2": {
+          "type": "product_card",
           "settings": {
+            "title": "Shopify's Best Preorder App",
+            "subtitle": "Triggers preorder widget.",
+            "price_label": "$0.00/mo",
+            "stock_state": "preorder",
+            "cta_label": "Try it →",
+            "cta_url": "/products/shopify-s-best-preorder-app"
+          }
+        },
+        "pg3": {
+          "type": "product_card",
+          "settings": {
+            "title": "Shopify's Best Wishlist App",
+            "subtitle": "Wishlist heart on PDP.",
+            "price_label": "$0.00/mo",
+            "stock_state": "in_stock",
+            "cta_label": "Try it →",
+            "cta_url": "/products/shopify-s-best-wishlist-app"
+          }
+        },
+        "pg4": {
+          "type": "product_card",
+          "settings": {
+            "title": "Shopify's Best Low-Stock Alert App",
+            "subtitle": "Demos FOMO/urgency bar.",
+            "price_label": "$0.00/mo",
+            "stock_state": "low_stock",
+            "cta_label": "Try it →",
+            "cta_url": "/products/shopify-s-best-low-stock-alert-app"
+          }
+        },
+        "pg5": {
+          "type": "product_card",
+          "settings": {
+            "title": "Notify Me! AI for Restock Decisions",
+            "subtitle": "Demos preorder w/ launch date.",
+            "price_label": "$0.00/mo",
+            "stock_state": "coming_soon",
+            "cta_label": "Try it →",
+            "cta_url": "/products/notify-me-ai-for-restock-decisions"
+          }
+        },
+        "pg6": {
+          "type": "product_card",
+          "settings": {
+            "title": "Multi-Language Widget Bundle",
+            "subtitle": "Demos language picker.",
+            "price_label": "$0.00/mo",
+            "stock_state": "in_stock",
+            "cta_label": "Try it →",
+            "cta_url": "/products/multi-language-widget-bundle"
+          }
+        }
+      },
+      "block_order": ["pg1", "pg2", "pg3", "pg4", "pg5", "pg6"],
+      "settings": {
+        "section_anchor_id": "nm-product-grid",
+        "show_intro": true,
+        "intro_kicker": "Notify Me! essentials.",
+        "intro_subtitle": "Six features. One app. Zero lost sales.",
+        "link_compare_label": "Compare features ↗",
+        "link_compare_url": "/pages/compare",
+        "link_all_label": "View all features →",
+        "link_all_url": "/collections/all"
+      }
+    },
+    "nm_widget": {
+      "type": "demo-widget-preview",
+      "settings": {}
+    },
+    "nm_pitch": {
+      "type": "demo-pitch",
+      "settings": {}
+    },
+    "nm_testimonials": {
+      "type": "demo-testimonials",
+      "blocks": {
+        "t1": {
+          "type": "quote",
+          "settings": {
+            "tag": "RESTOCK",
+            "quote": "We recovered $84K in 90 days from products our customers thought were gone forever.",
+            "author": "Sara K., Founder"
+          }
+        },
+        "t2": {
+          "type": "quote",
+          "settings": {
+            "tag": "PREORDER",
+            "quote": "Sold out the launch in 11 hours — before a single unit shipped.",
+            "author": "Marcus L., DTC Brand"
+          }
+        },
+        "t3": {
+          "type": "quote",
+          "settings": {
+            "tag": "WISHLIST",
+            "quote": "Wishlist data became our merchandising bible. We now restock based on actual demand.",
+            "author": "Aisha P., Buyer"
+          }
+        },
+        "t4": {
+          "type": "quote",
+          "settings": {
+            "tag": "LOW STOCK",
+            "quote": "The FOMO bar bumped checkout conversion 14% in the first week.",
+            "author": "Luca R., CRO Lead"
+          }
+        },
+        "t5": {
+          "type": "quote",
+          "settings": {
+            "tag": "AI SUGGESTIONS",
+            "quote": "Notify Me! AI told us what to restock first. Reorder cycle dropped 40%.",
+            "author": "Nina W., Ops"
+          }
+        },
+        "t6": {
+          "type": "quote",
+          "settings": {
+            "tag": "MULTI-LOCATION",
+            "quote": "Multi-location alerts saved our wholesale team 6 hours a week.",
+            "author": "Trent G., B2B Manager"
+          }
+        },
+        "t7": {
+          "type": "quote",
+          "settings": {
+            "tag": "INTEGRATIONS",
+            "quote": "Klaviyo flows + Notify Me! triggers = compounding LTV.",
+            "author": "Marta H., CRM Lead"
+          }
+        }
+      },
+      "block_order": ["t1", "t2", "t3", "t4", "t5", "t6", "t7"],
+      "settings": {}
+    },
+    "nm_how": {
+      "type": "demo-how-it-works",
+      "blocks": {
+        "s1": {
+          "type": "step",
+          "settings": {
+            "step_number": "1",
+            "icon": "capture",
+            "title": "Capture demand",
+            "text": "Shoppers tap \"Notify Me\" on any out-of-stock variant. Email captured, intent logged."
+          }
+        },
+        "s2": {
+          "type": "step",
+          "settings": {
+            "step_number": "2",
             "icon": "notify",
-            "title": "Back in stock",
-            "text": "<p>Use zero-quantity items to demo notify-me flows. Merchants see exactly how email or SMS alerts appear on sold-out variants.</p>",
-            "link_label": "Restock picks",
-            "link": "shopify://collections/all"
+            "title": "Notify on restock",
+            "text": "Email, SMS, or push fires automatically the moment inventory returns."
           }
         },
-        "f3": {
-          "type": "feature",
+        "s3": {
+          "type": "step",
           "settings": {
+            "step_number": "3",
+            "icon": "preorder",
+            "title": "Convert preorders",
+            "text": "Sell what you don't have yet. Deposits or full payment, your call."
+          }
+        },
+        "s4": {
+          "type": "step",
+          "settings": {
+            "step_number": "4",
             "icon": "wishlist",
-            "title": "Wishlist",
-            "text": "<p>Drive retention with saved items across sessions. Pair this narrative with your wishlist entry points on collection and product pages.</p>",
-            "link_label": "Wishlist showcase",
-            "link": "shopify://collections/all"
+            "title": "Save wishlists",
+            "text": "Logged-in shoppers save items. You see exactly what's wanted, by who, at what size."
+          }
+        },
+        "s5": {
+          "type": "step",
+          "settings": {
+            "step_number": "5",
+            "icon": "chart",
+            "title": "Recover lost revenue",
+            "text": "Dashboard shows recovered sales, top wanted SKUs, and unfulfilled demand."
           }
         }
       },
-      "block_order": ["f1", "f2", "f3"],
-      "settings": {
-        "title": "Three journeys merchants care about",
-        "heading_size": "h1",
-        "color_scheme": "scheme-1",
-        "padding_top": 52,
-        "padding_bottom": 44
-      }
+      "block_order": ["s1", "s2", "s3", "s4", "s5"],
+      "settings": {}
     },
-    "demo_collections": {
-      "type": "demo-store-collection-cards",
+    "nm_dash": {
+      "type": "demo-dashboard-preview",
+      "settings": {}
+    },
+    "nm_value": {
+      "type": "demo-value-props",
       "blocks": {
-        "c1": {
-          "type": "card",
+        "b1": {
+          "type": "bullet",
           "settings": {
-            "custom_title": "Preorder spotlight",
-            "hint": "Selling plans & future inventory"
+            "text": "✅ Free 14-day trial — no credit card"
           }
         },
-        "c2": {
-          "type": "card",
+        "b2": {
+          "type": "bullet",
           "settings": {
-            "custom_title": "Almost gone",
-            "hint": "Low stock → urgency & alerts"
+            "text": "✅ Free 1:1 onboarding call"
           }
         },
-        "c3": {
-          "type": "card",
+        "b3": {
+          "type": "bullet",
           "settings": {
-            "custom_title": "Wishlist favorites",
-            "hint": "High-intent saves"
+            "text": "✅ 24/7 support, average response: 11 minutes"
+          }
+        },
+        "b4": {
+          "type": "bullet",
+          "settings": {
+            "text": "✅ GDPR + CCPA compliant"
+          }
+        },
+        "b5": {
+          "type": "bullet",
+          "settings": {
+            "text": "✅ Works with 50+ Shopify themes out of the box"
           }
         }
       },
-      "block_order": ["c1", "c2", "c3"],
-      "settings": {
-        "title": "Curated collections for screenshots",
-        "subtitle": "<p>Connect each card to a real collection in the editor — match titles to how you merchandise preorder, restock, and wishlist journeys.</p>",
-        "heading_size": "h2",
-        "color_scheme": "scheme-2",
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
+      "block_order": ["b1", "b2", "b3", "b4", "b5"],
+      "settings": {}
     },
-    "featured_collection": {
-      "type": "featured-collection",
-      "settings": {
-        "title": "Featured products",
-        "heading_size": "h2",
-        "collection": "all",
-        "products_to_show": 8,
-        "columns_desktop": 4,
-        "color_scheme": "scheme-1",
-        "show_view_all": true,
-        "swipe_on_mobile": true,
-        "image_ratio": "adapt",
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": false,
-        "columns_mobile": "2",
-        "padding_top": 28,
-        "padding_bottom": 48
-      }
-    },
-    "rich_text": {
-      "type": "rich-text",
-      "blocks": {
-        "heading": {
-          "type": "heading",
-          "settings": {
-            "heading": "Designed for your app listing",
-            "heading_size": "h2"
-          }
-        },
-        "text": {
-          "type": "text",
-          "settings": {
-            "text": "<p>This layout stays close to Dawn defaults so upgrades stay easy. Add your app embeds and blocks in the theme editor, then capture crisp storefront recordings for the App Store.</p>"
-          }
-        }
-      },
-      "block_order": ["heading", "text"],
-      "settings": {
-        "color_scheme": "scheme-1",
-        "full_width": true,
-        "padding_top": 28,
-        "padding_bottom": 52
-      }
-    },
-    "multicolumn": {
-      "type": "multicolumn",
-      "blocks": {
-        "column1": {
-          "type": "column",
-          "settings": {
-            "title": "Fast setup",
-            "text": "<p>Dawn OS 2.0 sections — duplicate or reorder blocks without touching code.</p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column2": {
-          "type": "column",
-          "settings": {
-            "title": "Merchant-grade polish",
-            "text": "<p>Responsive grids, accessible typography, and space for trust badges.</p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column3": {
-          "type": "column",
-          "settings": {
-            "title": "App-ready story",
-            "text": "<p>Hero, pillars, and collection tiles map directly to preorder, alerts, and wishlist workflows.</p>",
-            "link_label": "",
-            "link": ""
-          }
-        }
-      },
-      "block_order": ["column1", "column2", "column3"],
-      "settings": {
-        "title": "",
-        "heading_size": "h1",
-        "image_width": "third",
-        "image_ratio": "adapt",
-        "columns_desktop": 3,
-        "column_alignment": "center",
-        "background_style": "none",
-        "button_label": "",
-        "button_link": "",
-        "swipe_on_mobile": false,
-        "color_scheme": "scheme-1",
-        "columns_mobile": "1",
-        "padding_top": 8,
-        "padding_bottom": 44
-      }
+    "nm_final": {
+      "type": "demo-final-cta",
+      "settings": {}
     }
   },
   "order": [
-    "demo_hero",
-    "demo_features",
-    "demo_collections",
-    "featured_collection",
-    "rich_text",
-    "multicolumn"
+    "nm_hero",
+    "nm_grid",
+    "nm_widget",
+    "nm_pitch",
+    "nm_testimonials",
+    "nm_how",
+    "nm_dash",
+    "nm_value",
+    "nm_final"
   ]
 }
