@@ -1,0 +1,209 @@
+/* Demo store — preorder / back in stock / wishlist showcase (Dawn-compatible) */
+
+.demo-store-hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 28rem;
+  overflow: hidden;
+}
+
+.demo-store-hero--no-image {
+  min-height: 0;
+}
+
+@media screen and (min-width: 750px) {
+  .demo-store-hero {
+    min-height: 36rem;
+  }
+}
+
+.demo-store-hero__media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.demo-store-hero__media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgb(0 0 0 / 0.45);
+  pointer-events: none;
+}
+
+.demo-store-hero__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.demo-store-hero__inner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 68rem;
+  margin: 0 auto;
+  padding: 4rem 1.5rem;
+  text-align: center;
+}
+
+@media screen and (min-width: 750px) {
+  .demo-store-hero__inner {
+    padding: 5rem 5rem;
+  }
+}
+
+.demo-store-hero__eyebrow {
+  display: inline-block;
+  margin: 0 0 1rem;
+  font-size: 1.2rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.9;
+}
+
+.demo-store-hero__heading {
+  margin: 0 0 1rem;
+  line-height: 1.1;
+  word-break: break-word;
+}
+
+.demo-store-hero__text {
+  margin: 0 auto 2rem;
+  max-width: 42rem;
+  font-size: 1.6rem;
+}
+
+.demo-store-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.demo-store-features__grid {
+  display: grid;
+  gap: 2rem;
+}
+
+@media screen and (min-width: 750px) {
+  .demo-store-features__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2.5rem;
+    align-items: start;
+  }
+}
+
+.demo-store-feature {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 2rem 1.5rem;
+  border-radius: var(--border-radius, 0);
+  border: 0.1rem solid rgba(var(--color-foreground), 0.12);
+  background: rgb(var(--color-background));
+  height: 100%;
+}
+
+.demo-store-feature__icon {
+  width: 4.8rem;
+  height: 4.8rem;
+  margin-bottom: 1.5rem;
+  color: rgb(var(--color-foreground));
+}
+
+.demo-store-feature__icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.demo-store-feature__title {
+  margin: 0 0 0.75rem;
+}
+
+.demo-store-feature__text {
+  margin: 0 0 1.25rem;
+  flex-grow: 1;
+}
+
+.demo-store-collection-cards__grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+@media screen and (min-width: 990px) {
+  .demo-store-collection-cards__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.demo-store-collection-card {
+  position: relative;
+  display: block;
+  border-radius: var(--border-radius, 0);
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  border: 0.1rem solid rgba(var(--color-foreground), 0.1);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.demo-store-collection-card:hover {
+  transform: translateY(-0.2rem);
+  box-shadow: 0 1.2rem 2.4rem rgba(var(--color-shadow), 0.15);
+}
+
+.demo-store-collection-card__media {
+  aspect-ratio: 4 / 3;
+  background: rgba(var(--color-foreground), 0.06);
+}
+
+.demo-store-collection-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.demo-store-collection-card__body {
+  padding: 1.5rem 1.5rem 1.75rem;
+}
+
+.demo-store-collection-card__label {
+  margin: 0;
+  font-size: 1.4rem;
+}
+
+.demo-store-collection-card__hint {
+  margin: 0.35rem 0 0;
+  font-size: 1.3rem;
+  opacity: 0.75;
+}
+
+.demo-product-strip {
+  border-bottom: 0.1rem solid rgba(var(--color-foreground), 0.12);
+}
+
+.demo-product-strip__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem 1.5rem;
+  text-align: center;
+  font-size: 1.4rem;
+}
+
+.demo-product-strip__badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--buttons-radius-outset, 0);
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: rgb(var(--color-foreground));
+  color: rgb(var(--color-background));
+}

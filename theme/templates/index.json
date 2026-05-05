@@ -1,0 +1,203 @@
+{
+  "sections": {
+    "demo_hero": {
+      "type": "demo-store-hero",
+      "settings": {
+        "image_overlay_opacity": 45,
+        "eyebrow": "Preorder · Back in stock · Wishlist",
+        "heading": "Build confidence before you launch",
+        "heading_size": "h0",
+        "text": "<p>This Dawn storefront is wired for your Back in Stock & Preorder demo — showcase alerts, reservations, and saved items with real catalog scenarios.</p>",
+        "button_label": "Explore collections",
+        "button_link": "shopify://collections/all",
+        "button_style_secondary": false,
+        "button_label_2": "How it works",
+        "button_link_2": "",
+        "button_style_secondary_2": true,
+        "color_scheme": "scheme-3",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "demo_features": {
+      "type": "demo-store-features",
+      "blocks": {
+        "f1": {
+          "type": "feature",
+          "settings": {
+            "icon": "preorder",
+            "title": "Preorder",
+            "text": "<p>Highlight upcoming inventory and capture demand early. Place your app’s preorder controls beside Add to cart on the product template.</p>",
+            "link_label": "Preorder collection",
+            "link": "shopify://collections/all"
+          }
+        },
+        "f2": {
+          "type": "feature",
+          "settings": {
+            "icon": "notify",
+            "title": "Back in stock",
+            "text": "<p>Use zero-quantity items to demo notify-me flows. Merchants see exactly how email or SMS alerts appear on sold-out variants.</p>",
+            "link_label": "Restock picks",
+            "link": "shopify://collections/all"
+          }
+        },
+        "f3": {
+          "type": "feature",
+          "settings": {
+            "icon": "wishlist",
+            "title": "Wishlist",
+            "text": "<p>Drive retention with saved items across sessions. Pair this narrative with your wishlist entry points on collection and product pages.</p>",
+            "link_label": "Wishlist showcase",
+            "link": "shopify://collections/all"
+          }
+        }
+      },
+      "block_order": ["f1", "f2", "f3"],
+      "settings": {
+        "title": "Three journeys merchants care about",
+        "heading_size": "h1",
+        "color_scheme": "scheme-1",
+        "padding_top": 52,
+        "padding_bottom": 44
+      }
+    },
+    "demo_collections": {
+      "type": "demo-store-collection-cards",
+      "blocks": {
+        "c1": {
+          "type": "card",
+          "settings": {
+            "custom_title": "Preorder spotlight",
+            "hint": "Selling plans & future inventory"
+          }
+        },
+        "c2": {
+          "type": "card",
+          "settings": {
+            "custom_title": "Almost gone",
+            "hint": "Low stock → urgency & alerts"
+          }
+        },
+        "c3": {
+          "type": "card",
+          "settings": {
+            "custom_title": "Wishlist favorites",
+            "hint": "High-intent saves"
+          }
+        }
+      },
+      "block_order": ["c1", "c2", "c3"],
+      "settings": {
+        "title": "Curated collections for screenshots",
+        "subtitle": "<p>Connect each card to a real collection in the editor — match titles to how you merchandise preorder, restock, and wishlist journeys.</p>",
+        "heading_size": "h2",
+        "color_scheme": "scheme-2",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "featured_collection": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Featured products",
+        "heading_size": "h2",
+        "collection": "all",
+        "products_to_show": 8,
+        "columns_desktop": 4,
+        "color_scheme": "scheme-1",
+        "show_view_all": true,
+        "swipe_on_mobile": true,
+        "image_ratio": "adapt",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "columns_mobile": "2",
+        "padding_top": 28,
+        "padding_bottom": 48
+      }
+    },
+    "rich_text": {
+      "type": "rich-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Designed for your app listing",
+            "heading_size": "h2"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>This layout stays close to Dawn defaults so upgrades stay easy. Add your app embeds and blocks in the theme editor, then capture crisp storefront recordings for the App Store.</p>"
+          }
+        }
+      },
+      "block_order": ["heading", "text"],
+      "settings": {
+        "color_scheme": "scheme-1",
+        "full_width": true,
+        "padding_top": 28,
+        "padding_bottom": 52
+      }
+    },
+    "multicolumn": {
+      "type": "multicolumn",
+      "blocks": {
+        "column1": {
+          "type": "column",
+          "settings": {
+            "title": "Fast setup",
+            "text": "<p>Dawn OS 2.0 sections — duplicate or reorder blocks without touching code.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column2": {
+          "type": "column",
+          "settings": {
+            "title": "Merchant-grade polish",
+            "text": "<p>Responsive grids, accessible typography, and space for trust badges.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column3": {
+          "type": "column",
+          "settings": {
+            "title": "App-ready story",
+            "text": "<p>Hero, pillars, and collection tiles map directly to preorder, alerts, and wishlist workflows.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": ["column1", "column2", "column3"],
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "image_width": "third",
+        "image_ratio": "adapt",
+        "columns_desktop": 3,
+        "column_alignment": "center",
+        "background_style": "none",
+        "button_label": "",
+        "button_link": "",
+        "swipe_on_mobile": false,
+        "color_scheme": "scheme-1",
+        "columns_mobile": "1",
+        "padding_top": 8,
+        "padding_bottom": 44
+      }
+    }
+  },
+  "order": [
+    "demo_hero",
+    "demo_features",
+    "demo_collections",
+    "featured_collection",
+    "rich_text",
+    "multicolumn"
+  ]
+}

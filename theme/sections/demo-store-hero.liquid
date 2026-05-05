@@ -1,0 +1,205 @@
+{{ 'section-demo-store.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+
+  {% if section.settings.image != blank %}
+    #DemoHero-{{ section.id }} .demo-store-hero__media::after {
+      opacity: {{ section.settings.image_overlay_opacity | divided_by: 100.0 }};
+    }
+  {% endif %}
+{%- endstyle -%}
+
+<div id="DemoHero-{{ section.id }}" class="color-{{ section.settings.color_scheme }} gradient">
+  <div class="demo-store-hero section-{{ section.id }}-padding{% if section.settings.image == blank %} demo-store-hero--no-image{% endif %}">
+    {%- if section.settings.image != blank -%}
+      <div class="demo-store-hero__media media">
+        {{
+          section.settings.image
+          | image_url: width: 3840
+          | image_tag:
+            loading: 'eager',
+            fetchpriority: 'high',
+            widths: '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840',
+            sizes: '100vw',
+            class: 'demo-store-hero__img'
+        }}
+      </div>
+    {%- endif -%}
+
+    <div class="demo-store-hero__inner">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="demo-store-hero__eyebrow">{{ section.settings.eyebrow | escape }}</p>
+      {%- endif -%}
+
+      {%- if section.settings.heading != blank -%}
+        <h1 class="demo-store-hero__heading {{ section.settings.heading_size }}">
+          {{ section.settings.heading | escape }}
+        </h1>
+      {%- endif -%}
+
+      {%- if section.settings.text != blank -%}
+        <div class="demo-store-hero__text rte">{{ section.settings.text }}</div>
+      {%- endif -%}
+
+      <div class="demo-store-hero__actions">
+        {%- if section.settings.button_label != blank -%}
+          <a
+            class="button{% if section.settings.button_style_secondary %} button--secondary{% endif %}"
+            {% if section.settings.button_link == blank %}
+              role="link" aria-disabled="true"
+            {% else %}
+              href="{{ section.settings.button_link }}"
+            {% endif %}
+          >
+            {{ section.settings.button_label | escape }}
+          </a>
+        {%- endif -%}
+        {%- if section.settings.button_label_2 != blank -%}
+          <a
+            class="button{% if section.settings.button_style_secondary_2 %} button--secondary{% endif %}"
+            {% if section.settings.button_link_2 == blank %}
+              role="link" aria-disabled="true"
+            {% else %}
+              href="{{ section.settings.button_link_2 }}"
+            {% endif %}
+          >
+            {{ section.settings.button_label_2 | escape }}
+          </a>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Demo store hero",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Background image"
+    },
+    {
+      "type": "range",
+      "id": "image_overlay_opacity",
+      "min": 0,
+      "max": 80,
+      "step": 5,
+      "unit": "%",
+      "label": "Image overlay strength",
+      "default": 40
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Preorder · Back in stock · Wishlist"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Shop the demo collection"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "Heading size",
+      "options": [
+        { "value": "h2", "label": "Small" },
+        { "value": "h1", "label": "Medium" },
+        { "value": "h0", "label": "Large" }
+      ],
+      "default": "h0"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text",
+      "default": "<p>Reserve upcoming drops, get notified when favorites restock, and save items to your wishlist — built for your Back in Stock & Preorder app demo.</p>"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Primary button label",
+      "default": "Shop preorder"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Primary button link"
+    },
+    {
+      "type": "checkbox",
+      "id": "button_style_secondary",
+      "label": "Use secondary style for primary button",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "button_label_2",
+      "label": "Secondary button label",
+      "default": "Join the waitlist"
+    },
+    {
+      "type": "url",
+      "id": "button_link_2",
+      "label": "Secondary button link"
+    },
+    {
+      "type": "checkbox",
+      "id": "button_style_secondary_2",
+      "label": "Use secondary style for second button",
+      "default": true
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-3"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding",
+      "default": 0
+    }
+  ],
+  "presets": [
+    {
+      "name": "Demo store hero"
+    }
+  ]
+}
+{% endschema %}
