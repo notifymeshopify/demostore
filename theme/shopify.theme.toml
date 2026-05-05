@@ -1,0 +1,5 @@
+# Default theme environment — pushes target this dev store unless overridden.
+# Docs: https://shopify.dev/docs/storefronts/themes/tools/cli
+
+[environments.default]
+store = "demo-store-test-nm-1.myshopify.com"
