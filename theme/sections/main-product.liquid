@@ -222,6 +222,29 @@
                       {{- 'icon-caret.svg' | inline_asset_content -}}
                     </summary>
                     <div class="accordion__content rte" id="ProductAccordion-{{ block.id }}-{{ section.id }}">
+                      {%- if block.settings.show_product_featured_image -%}
+                        {%- liquid
+                          assign accordion_visual = product.featured_image
+                          if accordion_visual == blank and product.featured_media.preview_image
+                            assign accordion_visual = product.featured_media.preview_image
+                          endif
+                        -%}
+                        {%- if accordion_visual != blank -%}
+                          {%- assign accordion_img_alt = accordion_visual.alt | default: product.title | escape -%}
+                          <figure class="product__accordion-featured-media">
+                            {{
+                              accordion_visual
+                              | image_url: width: 1200
+                              | image_tag:
+                                loading: 'lazy',
+                                class: 'product__accordion-featured-img',
+                                sizes: '(min-width: 990px) 45vw, 100vw',
+                                widths: '375, 550, 750, 1100, 1200',
+                                alt: accordion_img_alt
+                            }}
+                          </figure>
+                        {%- endif -%}
+                      {%- endif -%}
                       {{ block.settings.content }}
                       {{ block.settings.page.content }}
                     </div>
@@ -1151,6 +1174,12 @@
           ],
           "default": "check_mark",
           "label": "t:sections.main-product.blocks.collapsible_tab.settings.icon.label"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_product_featured_image",
+          "default": false,
+          "label": "Show product featured image in tab"
         },
         {
           "type": "richtext",

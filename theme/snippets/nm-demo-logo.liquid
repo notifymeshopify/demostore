@@ -1,9 +1,20 @@
-{% comment %} Notify Me! demo header lockup {% endcomment %}
-<a href="{{ routes.root_url }}" class="nm-logo" aria-label="{{ shop.name | escape }}">
-  <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-    <path d="M14 3a7 7 0 0 0-7 7v3.5L5 17h18l-2-3.5V10a7 7 0 0 0-7-7Z" fill="currentColor"/>
-    <path d="M11 20a3 3 0 0 0 6 0" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-  </svg>
-  <span class="nm-wordmark"><em>Notify&nbsp;Me!</em><sup>™</sup></span>
+{% comment %} Notify Me! demo header lockup — uses Theme settings logo when set (official mark), else bell + wordmark. {% endcomment %}
+<a href="{{ routes.root_url }}" class="nm-logo{% if settings.logo != blank %} nm-logo--has-image{% endif %}" aria-label="{{ shop.name | escape }}">
+  {%- if settings.logo != blank -%}
+    <span class="nm-logo__img-wrap">
+      {%- assign nm_logo_alt = settings.logo.alt | default: 'Notify Me!' | escape -%}
+      {{
+        settings.logo
+        | image_url: width: 360
+        | image_tag: class: 'nm-logo__img', loading: 'eager', alt: nm_logo_alt, widths: '180, 270, 360'
+      }}
+    </span>
+  {%- else -%}
+    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+      <path d="M14 3a7 7 0 0 0-7 7v3.5L5 17h18l-2-3.5V10a7 7 0 0 0-7-7Z" fill="currentColor"/>
+      <path d="M11 20a3 3 0 0 0 6 0" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+    </svg>
+    <span class="nm-wordmark">Notify&nbsp;Me!<sup>™</sup></span>
+  {%- endif -%}
   <span class="nm-demo-badge">{{ section.settings.nm_demo_badge_text | escape }}</span>
 </a>

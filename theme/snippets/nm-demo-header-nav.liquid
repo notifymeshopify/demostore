@@ -1,35 +1,37 @@
-{% comment %} Desktop Notify Me! demo navigation + Features mega grid. {% endcomment %}
+{% comment %} Desktop Notify Me! demo navigation: Products (4 PDPs), How it works anchor, Install App CTA. {% endcomment %}
 <nav class="nm-demo-nav" aria-label="{{ section.settings.nm_nav_aria_label | escape }}">
   <div class="nm-demo-nav__inner">
-    {%- if section.settings.nm_link_shop_label != blank -%}
-      <a href="{{ section.settings.nm_link_shop }}">{{ section.settings.nm_link_shop_label | escape }}</a>
-    {%- endif -%}
-    <div class="nm-demo-nav__mega-wrap">
-      <span class="nm-demo-nav__mega-btn" role="presentation">{{ section.settings.nm_link_features_label | escape }}</span>
-      <div class="nm-demo-mega" id="NmMega-{{ section.id }}">
-        <div class="nm-demo-mega__grid">
-          {%- for block in section.blocks -%}
-            {%- if block.type == 'nm_mega_item' -%}
-              <div class="nm-demo-mega__card" {{ block.shopify_attributes }}>
-                <h4>{{ block.settings.title | escape }}</h4>
-                <p>{{ block.settings.description | escape }}</p>
-                {%- if block.settings.link_url != blank -%}
-                  <a href="{{ block.settings.link_url }}">{{ block.settings.link_label | escape }}</a>
-                {%- endif -%}
-              </div>
-            {%- endif -%}
-          {%- endfor -%}
-        </div>
-      </div>
+    <div class="nm-demo-nav__dropdown-wrap">
+      <span class="nm-demo-nav__dropdown-btn" role="presentation">{{ section.settings.nm_link_products_label | escape }}</span>
+      <ul class="nm-demo-nav__submenu" role="list">
+        <li>
+          <a href="/products/best-back-in-stock-app">Shopify's Best Back-in-Stock App</a>
+        </li>
+        <li>
+          <a href="/products/best-preorder-app">Shopify's Best Preorder App</a>
+        </li>
+        <li>
+          <a href="/products/best-wishlist-app">Shopify's Best Wishlist App</a>
+        </li>
+        <li>
+          <a href="/products/best-low-stock-alert-app">Shopify's Best Low-Stock Alert App</a>
+        </li>
+      </ul>
     </div>
+
     {%- if section.settings.nm_link_how_label != blank -%}
-      <a href="{{ section.settings.nm_link_how }}">{{ section.settings.nm_link_how_label | escape }}</a>
+      <a href="{{ routes.root_url }}#nm-how" class="nm-demo-nav__link">{{ section.settings.nm_link_how_label | escape }}</a>
     {%- endif -%}
-    {%- if section.settings.nm_link_pricing_label != blank -%}
-      <a href="{{ section.settings.nm_link_pricing }}">{{ section.settings.nm_link_pricing_label | escape }}</a>
-    {%- endif -%}
-    {%- if section.settings.nm_link_about_label != blank -%}
-      <a href="{{ section.settings.nm_link_about }}">{{ section.settings.nm_link_about_label | escape }}</a>
+
+    {%- if section.settings.nm_install_app_label != blank and section.settings.nm_install_app_url != blank -%}
+      <a
+        href="{{ section.settings.nm_install_app_url }}"
+        class="nm-demo-nav__cta"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {{- section.settings.nm_install_app_label | escape -}}
+      </a>
     {%- endif -%}
   </div>
 </nav>

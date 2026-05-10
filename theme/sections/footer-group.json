@@ -9,38 +9,38 @@
           "type": "text",
           "settings": {
             "heading": "Product",
-            "subtext": "<ul><li><a href=\"/products/shopify-s-best-back-in-stock-app\">Back in Stock</a></li><li><a href=\"/products/shopify-s-best-preorder-app\">Preorder</a></li><li><a href=\"/products/shopify-s-best-wishlist-app\">Wishlist</a></li><li><a href=\"/products/shopify-s-best-low-stock-alert-app\">Low Stock</a></li><li><a href=\"/products/notify-me-ai-for-restock-decisions\">AI Suggestions</a></li><li><a href=\"/products/multi-language-widget-bundle\">Multi-Language</a></li></ul>"
+            "subtext": "<ul><li><a href=\"https://notify-me.io/back-in-stock\" target=\"_blank\" rel=\"noopener\">Back in Stock</a></li><li><a href=\"https://notify-me.io/shopify-preorder\" target=\"_blank\" rel=\"noopener\">Preorder</a></li><li><a href=\"https://notify-me.io/wishlist\" target=\"_blank\" rel=\"noopener\">Wishlist</a></li><li><a href=\"https://notify-me.io/low-stock\" target=\"_blank\" rel=\"noopener\">Low Stock</a></li></ul>"
           }
         },
         "col-solutions": {
           "type": "text",
           "settings": {
             "heading": "Solutions",
-            "subtext": "<ul><li><a href=\"/collections/all\">Apparel</a></li><li><a href=\"/collections/all\">Electronics</a></li><li><a href=\"/collections/all\">Food &amp; Beverage</a></li><li><a href=\"/collections/all\">Enterprise</a></li><li><a href=\"/collections/all\">Agency</a></li></ul>"
+            "subtext": "<ul><li><a href=\"https://notify-me.io/shopify\" target=\"_blank\" rel=\"noopener\">Shopify</a></li><li><a href=\"https://notify-me.io/bigcommerce\" target=\"_blank\" rel=\"noopener\">BigCommerce</a></li><li><a href=\"https://notify-me.io/apparel-and-fashion\" target=\"_blank\" rel=\"noopener\">Apparel &amp; Fashion</a></li><li><a href=\"https://notify-me.io/electronics\" target=\"_blank\" rel=\"noopener\">Electronics</a></li><li><a href=\"https://notify-me.io/enterprise\" target=\"_blank\" rel=\"noopener\">Enterprise</a></li></ul>"
           }
         },
         "col-resources": {
           "type": "text",
           "settings": {
             "heading": "Resources",
-            "subtext": "<ul><li><a href=\"/pages/contact\">Help Center</a></li><li><a href=\"/blogs/news\">Blog</a></li><li><a href=\"/pages/contact\">Case Studies</a></li><li><a href=\"/pages/contact\">API Docs</a></li><li><a href=\"/pages/contact\">Status</a></li></ul>"
+            "subtext": "<ul><li><a href=\"https://notify-me.io/blog\" target=\"_blank\" rel=\"noopener\">Blog</a></li><li><a href=\"https://notify-me.io/case-studies\" target=\"_blank\" rel=\"noopener\">Case studies</a></li><li><a href=\"https://notify-me.io/integrations\" target=\"_blank\" rel=\"noopener\">Integrations</a></li><li><a href=\"https://notify-me.io/pricing\" target=\"_blank\" rel=\"noopener\">Pricing</a></li></ul>"
           }
         },
         "col-company": {
           "type": "text",
           "settings": {
             "heading": "Company",
-            "subtext": "<ul><li><a href=\"/pages/contact\">Contact</a></li><li><a href=\"/pages/about\">Careers</a></li><li><a href=\"/pages/contact\">Brand Kit</a></li><li><a href=\"/pages/contact\">Affiliate Program</a></li></ul>"
+            "subtext": "<ul><li><a href=\"https://notify-me.io/contact-us\" target=\"_blank\" rel=\"noopener\">Contact us</a></li><li><a href=\"https://notify-me.io/brand-kit\" target=\"_blank\" rel=\"noopener\">Brand kit</a></li><li><a href=\"https://notify-me.io/partners\" target=\"_blank\" rel=\"noopener\">Partners program</a></li><li><a href=\"https://notify-me.io/affiliate-program-notify-me\" target=\"_blank\" rel=\"noopener\">Affiliate program</a></li></ul>"
           }
         }
       },
       "block_order": ["col-product", "col-solutions", "col-resources", "col-company"],
       "settings": {
         "color_scheme": "scheme-1",
-        "newsletter_enable": true,
-        "newsletter_heading": "Get monthly inventory recovery tips.",
-        "newsletter_subtext": "<p>Join our newsletter for restock benchmarks and merchant case studies.</p>",
-        "nm_footer_caption": "<p>© 2026 Notify Me!™ Demo Store. This is a demo. Get the real app at <a href=\"https://apps.shopify.com/preorder-back-in-stock\">apps.shopify.com/preorder-back-in-stock</a></p>",
+        "newsletter_enable": false,
+        "newsletter_heading": "",
+        "newsletter_subtext": "",
+        "nm_footer_caption": "<p>© 2026 Notify Me!™ Demo Store. This is a demo. Learn more at <a href=\"https://notify-me.io/\" target=\"_blank\" rel=\"noopener\">notify-me.io</a> · Get the app at <a href=\"https://apps.shopify.com/preorder-back-in-stock\" target=\"_blank\" rel=\"noopener\">apps.shopify.com/preorder-back-in-stock</a></p>",
         "show_social": true,
         "enable_country_selector": false,
         "enable_language_selector": false,

@@ -508,7 +508,7 @@
 {
   "name": "t:sections.header.name",
   "class": "section-header",
-  "max_blocks": 24,
+  "max_blocks": 8,
   "settings": [
     {
       "type": "header",
@@ -534,53 +534,28 @@
     },
     {
       "type": "text",
-      "id": "nm_link_shop_label",
-      "label": "Nav: Shop label",
-      "default": "Shop"
-    },
-    {
-      "type": "url",
-      "id": "nm_link_shop",
-      "label": "Nav: Shop URL"
-    },
-    {
-      "type": "text",
-      "id": "nm_link_features_label",
-      "label": "Nav: Features label",
-      "default": "Features"
+      "id": "nm_link_products_label",
+      "label": "Nav: Products label",
+      "default": "Products"
     },
     {
       "type": "text",
       "id": "nm_link_how_label",
       "label": "Nav: How it works label",
-      "default": "How it Works"
-    },
-    {
-      "type": "url",
-      "id": "nm_link_how",
-      "label": "Nav: How it works URL"
+      "default": "How it works"
     },
     {
       "type": "text",
-      "id": "nm_link_pricing_label",
-      "label": "Nav: Pricing label",
-      "default": "Pricing"
-    },
-    {
-      "type": "url",
-      "id": "nm_link_pricing",
-      "label": "Nav: Pricing URL"
+      "id": "nm_install_app_label",
+      "label": "Nav: Install App button label",
+      "default": "Install App"
     },
     {
       "type": "text",
-      "id": "nm_link_about_label",
-      "label": "Nav: About label",
-      "default": "About"
-    },
-    {
-      "type": "url",
-      "id": "nm_link_about",
-      "label": "Nav: About URL"
+      "id": "nm_install_app_url",
+      "label": "Install App URL",
+      "default": "https://apps.shopify.com/preorder-back-in-stock",
+      "info": "Shopify App Store listing (opens in a new tab)."
     },
     {
       "type": "select",
@@ -762,36 +737,6 @@
   "blocks": [
     {
       "type": "@app"
-    },
-    {
-      "type": "nm_mega_item",
-      "name": "NM mega menu item",
-      "limit": 6,
-      "settings": [
-        {
-          "type": "text",
-          "id": "title",
-          "label": "Title",
-          "default": "Feature"
-        },
-        {
-          "type": "textarea",
-          "id": "description",
-          "label": "Description",
-          "default": "One-line summary for this demo product."
-        },
-        {
-          "type": "text",
-          "id": "link_label",
-          "label": "Link label",
-          "default": "Try it →"
-        },
-        {
-          "type": "url",
-          "id": "link_url",
-          "label": "Link URL"
-        }
-      ]
     }
   ]
 }
